@@ -33,6 +33,9 @@ public class SecondPage extends AppCompatActivity {
 //                .load("http://10.0.2.2:8081/api/images/name/1682190407047.jpg")
 //                .into(imageView);
         Utils.insertImageByName("1682190407047.jpg", imageView);
+        BackendFetcher fetcher = new BackendFetcher();
+        fetcher.fetchData();
+        System.out.println(fetcher.getImageList());
         //insertImageByName("1682190407047.jpg", imageView);
     }
 }
