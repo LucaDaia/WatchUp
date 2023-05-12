@@ -5,12 +5,14 @@ public class Image {
     private String data;
     private String name;
     private int userID;
+    private String createdAt;
 
-    public Image(int id, String data, String name, int userID) {
+    public Image(int id, String data, String name, int userID, String createdAt) {
         this.id=id;
         this.data=data;
         this.name = name;
         this.userID=userID;
+        this.createdAt = createdAt;
     }
 
     public int getId() {
@@ -45,6 +47,10 @@ public class Image {
 //        this.userID = userID;
 //    }
 
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
 
     @Override
     public String toString() {
@@ -53,6 +59,7 @@ public class Image {
                 ", data='" + data + '\'' +
                 ", name='" + name + '\'' +
                 ", userID=" + userID +
+                ", createdAt='" + createdAt + '\'' +
                 '}';
     }
 }
