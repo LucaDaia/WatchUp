@@ -34,7 +34,7 @@ public class SecondPage extends AppCompatActivity {
 //        Picasso.get()
 //                .load("http://10.0.2.2:8081/api/images/name/1682190407047.jpg")
 //                .into(imageView);
-        Utils.insertImageByName("1682190407047.jpg", imageView);
+        Utils.insertImageByName("1682190407047.jpg", imageView,true);
         BackendFetcher fetcher = new BackendFetcher();
 //        fetcher.fetchData();
 //        List<Image> listuta= fetcher.getImageList();

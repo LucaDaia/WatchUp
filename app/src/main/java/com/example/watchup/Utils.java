@@ -1,5 +1,6 @@
 package com.example.watchup;
 
+import android.text.BoringLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,13 +19,20 @@ import java.util.Locale;
 
 public class Utils {
 //    public static String BaseUrl = "http://10.0.2.2:8081/api/";
-      public static String BaseUrl = "https://caca-188-26-139-100.ngrok-free.app/api/";
+      public static String BaseUrl = "https://95df-188-25-244-211.ngrok-free.app/api/";
 
-    public static void insertImageByName(String name, ImageView imageView) {
-        String url = Utils.BaseUrl + "images/name/" + name;
-        Picasso.get()
-                .load(url)
-                .into(imageView);
+    public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
+       String url = "";
+        if(typeOfImage == true) {
+            url = Utils.BaseUrl + "images/name/" + name;
+       }
+       else {
+           url = Utils.BaseUrl + "persons/name/" + name;
+       }
+           Picasso.get()
+                   .load(url)
+                   .into(imageView);
+
     }
 
 
