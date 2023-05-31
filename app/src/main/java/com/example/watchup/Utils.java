@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class Utils {
 //    public static String BaseUrl = "http://10.0.2.2:8081/api/";
-      public static String BaseUrl = "https://95df-188-25-244-211.ngrok-free.app/api/";
+      public static String BaseUrl = "https://2b43-188-25-244-211.ngrok-free.app/api/";
 
     public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
        String url = "";
@@ -58,6 +58,17 @@ public class Utils {
             return input.substring(startIndex);
         } else {
             return ""; // Return an empty string if "Images\" is not found
+        }
+    }
+
+    public static String removePersonImagesPath(String input) {
+        String substring = "Persons\\";
+        int startIndex = input.indexOf(substring);
+        if(startIndex != -1) {
+            startIndex += substring.length();
+            return input.substring(startIndex);
+        } else {
+            return "";
         }
     }
 

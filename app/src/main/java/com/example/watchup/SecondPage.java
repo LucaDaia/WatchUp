@@ -14,8 +14,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SecondPage extends AppCompatActivity {
+public class SecondPage extends AppCompatActivity implements FetchPersonDataCallback{
     private ImageView imageView;
+    private BackendFetcher fetcher;
+
 
     private void insertImageByName(String name, ImageView imageView) {
         String url = "http://10.0.2.2:8081/api/images/name/" + name;
@@ -35,7 +37,6 @@ public class SecondPage extends AppCompatActivity {
 //                .load("http://10.0.2.2:8081/api/images/name/1682190407047.jpg")
 //                .into(imageView);
         Utils.insertImageByName("1682190407047.jpg", imageView,true);
-        BackendFetcher fetcher = new BackendFetcher();
 //        fetcher.fetchData();
 //        List<Image> listuta= fetcher.getImageList();
 //        System.out.println(fetcher.getImageList());
@@ -43,5 +44,24 @@ public class SecondPage extends AppCompatActivity {
         //insertImageByName("1682190407047.jpg", imageView);
         String proba2 = "Images\1678117876881.jpg";
         Toast.makeText(this, Utils.removeImagesPath(proba2), Toast.LENGTH_LONG).show();
+
+        fetcher = new BackendFetcher();
+        fetchData();
+
+    }
+
+    private void fetchData() {
+        fetcher.fetchPersonData(this);
+    }
+
+    @Override
+    public void onPersonSuccess(List<Person> personList) {
+        System.out.println("SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println(personList);
+    }
+
+    @Override
+    public void onPersonFailure(String errorMessage) {
+        System.out.println("Ghinion vere");
     }
 }

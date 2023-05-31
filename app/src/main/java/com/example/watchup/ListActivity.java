@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity implements FetchDataCallback{
+public class ListActivity extends AppCompatActivity implements FetchDataCallback/*,FetchPersonDataCallback*/, RecyclerViewInterface{
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -22,6 +21,7 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
     private BackendFetcher fetcher;
     private Handler handler;
     private Runnable fetchRunnable;
+    private List<Person> personList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
         fetcher = new BackendFetcher();
         handler = new Handler();
 
+//        fetcher.fetchPersonData(this);
         fetchData();
 
         fetchRunnable = new Runnable() {
@@ -64,16 +65,15 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
     public void onSuccess(List<Image> imageList) {
         // Handle successful data retrieval
         List<Image> listuta = imageList;
-        Image img = listuta.get(0);
-        System.out.println("Okkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-        System.out.println(img.toString());
+        System.out.println("Reapelare fetcher");
 
         Utils.sortObjectsByDate(imageList);
-        adapter = new ImageAdapter(imageList);
+        adapter = new ImageAdapter(this, imageList);
         recyclerView.setAdapter(adapter);
         // Use the fetched data as needed
 
     }
+
 
     @Override
     public void onFailure(String errorMessage) {
@@ -88,4 +88,28 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
         // Stop fetching data when the activity is destroyed
         handler.removeCallbacks(fetchRunnable);
     }
+
+    @Override
+    public void onItemClick(int position, String name) {
+
+        System.out.println("SA VEDEM CE O SA IASA");
+        System.out.println("Position: " + position);
+        System.out.println("Name: " + name);
+
+        Intent intent = new Intent(this.getApplicationContext(), DetailsPage.class);
+        intent.putExtra("name", name);
+        startActivity(intent);
     }
+
+//    @Override
+//    public void onPersonSuccess(List<Person> personList) {
+//        this.personList = personList;
+//        System.out.println("PERSOOOOOOOOOOOOOOOOON");
+//        System.out.println(this.personList);
+//    }
+//
+//    @Override
+//    public void onPersonFailure(String errorMessage) {
+//        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+//    }
+}

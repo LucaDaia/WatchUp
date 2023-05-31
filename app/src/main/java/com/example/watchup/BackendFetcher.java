@@ -40,4 +40,27 @@ public class BackendFetcher {
             }
         });
     }
+
+    public void fetchPersonData(FetchPersonDataCallback callback1) {
+        Call<List<Person>> call = apiInterface.getPersons();
+        call.enqueue(new Callback<List<Person>>() {
+
+            @Override
+            public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
+                if(response.isSuccessful()) {
+                    List<Person> personList = response.body();
+                    callback1.onPersonSuccess(personList);
+                } else
+                {
+                    callback1.onPersonFailure("Response wasn't succesfull!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Person>> call, Throwable t) {
+                callback1.onPersonFailure("Failed to get images: " + t.getMessage());
+            }
+        });
+    }
+
 }

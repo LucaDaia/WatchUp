@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+    private final RecyclerViewInterface recyclerViewInterface;
+
     private List<Image> imageList;
 
     public static class ImageViewHolder extends RecyclerView.ViewHolder {
@@ -20,15 +22,30 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         public TextView textView1;
         public TextView textView2;
 
-        public ImageViewHolder(@NonNull View itemView) {
+        public ImageViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             textView1=itemView.findViewById(R.id.tvName);
             textView2=itemView.findViewById(R.id.tvLocation);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   if(recyclerViewInterface != null) {
+                       String name = textView1.getText().toString();
+                       int pos = getAdapterPosition();
+
+                       if(pos != RecyclerView.NO_POSITION) {
+                           recyclerViewInterface.onItemClick(pos, name);
+                       }
+                   }
+                }
+            });
         }
     }
 
-    public ImageAdapter(List<Image> imageList) {
+    public ImageAdapter(RecyclerViewInterface recyclerViewInterface, List<Image> imageList) {
+        this.recyclerViewInterface = recyclerViewInterface;
         this.imageList = imageList;
     }
 
@@ -36,7 +53,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
          View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_item, parent, false);
-         ImageViewHolder ivh = new ImageViewHolder(v);
+         ImageViewHolder ivh = new ImageViewHolder(v, recyclerViewInterface );
          return ivh;
     }
 
