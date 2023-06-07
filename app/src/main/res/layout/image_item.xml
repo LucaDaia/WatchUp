@@ -44,11 +44,23 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="40dp"
-            android:text="Location"
+            android:text="Date"
             android:textColor="@color/white"
             android:textStyle="normal">
 
         </TextView>
+
+        <TextView
+            android:id="@+id/textViewHiden"
+            android:layout_width="27dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="9dp"
+            android:layout_toStartOf="@+id/tvLocation"
+            android:text="Hidden"
+            android:textColor="@color/black"
+            android:textSize="1dp"/>
 
 
     </RelativeLayout>

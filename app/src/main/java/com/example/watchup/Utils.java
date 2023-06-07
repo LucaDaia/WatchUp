@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -19,7 +20,7 @@ import java.util.Locale;
 
 public class Utils {
 //    public static String BaseUrl = "http://10.0.2.2:8081/api/";
-      public static String BaseUrl = "https://2b43-188-25-244-211.ngrok-free.app/api/";
+      public static String BaseUrl = "https://71d6-188-25-244-211.ngrok-free.app/api/";
 
     public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
        String url = "";
@@ -88,6 +89,18 @@ public class Utils {
                 return date2.compareTo(date1);
             }
         });
+    }
+
+    public static List<Image> sortImageListOnlyByName(List<Image> imageList, String name) {
+        List<Image> temp = new ArrayList<>();
+        for(Image i:imageList) {
+            if(i.getName().equals(name)) {
+                temp.add(i);
+            }
+        }
+
+        Utils.sortObjectsByDate(temp);
+        return temp;
     }
 }
 

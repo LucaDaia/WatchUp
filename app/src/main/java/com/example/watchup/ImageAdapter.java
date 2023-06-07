@@ -21,22 +21,25 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         public ImageView imageView;
         public TextView textView1;
         public TextView textView2;
+        public TextView textView3;
 
         public ImageViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             textView1=itemView.findViewById(R.id.tvName);
             textView2=itemView.findViewById(R.id.tvLocation);
+            textView3 = itemView.findViewById(R.id.textViewHiden);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                    if(recyclerViewInterface != null) {
                        String name = textView1.getText().toString();
+                       String data = textView3.getText().toString();
                        int pos = getAdapterPosition();
 
                        if(pos != RecyclerView.NO_POSITION) {
-                           recyclerViewInterface.onItemClick(pos, name);
+                           recyclerViewInterface.onItemClick(pos, name, data);
                        }
                    }
                 }
@@ -66,6 +69,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         System.out.println(currImage.getName());
         holder.textView1.setText(currImage.getName());
         holder.textView2.setText(Utils.formatDateTime(currImage.getCreatedAt()));
+        holder.textView3.setText(currImage.getData());
 
     }
 

@@ -1,6 +1,11 @@
 package com.example.watchup;
 
-public class Image {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Image implements Parcelable {
     private int id;
     private String data;
     private String name;
@@ -14,6 +19,26 @@ public class Image {
         this.userID=userID;
         this.createdAt = createdAt;
     }
+
+    protected Image(Parcel in) {
+        id = in.readInt();
+        data = in.readString();
+        name = in.readString();
+        userID = in.readInt();
+        createdAt = in.readString();
+    }
+
+    public static final Creator<Image> CREATOR = new Creator<Image>() {
+        @Override
+        public Image createFromParcel(Parcel in) {
+            return new Image(in);
+        }
+
+        @Override
+        public Image[] newArray(int size) {
+            return new Image[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -61,5 +86,19 @@ public class Image {
                 ", userID=" + userID +
                 ", createdAt='" + createdAt + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(data);
+        dest.writeString(name);
+        dest.writeInt(userID);
+        dest.writeString(createdAt);
     }
 }
