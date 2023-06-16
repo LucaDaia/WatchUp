@@ -43,14 +43,13 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
         fetchRunnable = new Runnable() {
             @Override
             public void run() {
-                // Fetch data every ten seconds
                 fetchData();
-                // Schedule the next execution after 10 seconds
+
                 handler.postDelayed(this, 10000);
             }
         };
 
-        handler.postDelayed(fetchRunnable,20000);
+        handler.postDelayed(fetchRunnable,10000);
 
         recyclerView = findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);

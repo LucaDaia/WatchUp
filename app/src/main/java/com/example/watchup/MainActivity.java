@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity /* implements FetchDataCallback */{
+public class MainActivity extends AppCompatActivity /* implements FetchDataCallback */ {
 
     Button btnGetStarted;
     Button btnTest;
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity /* implements FetchDataCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Utils.checkNotifPermission(MainActivity.this, MainActivity.this);
 
         btnGetStarted = findViewById(R.id.butonGetStarted);
         btnGetStarted.setOnClickListener(view -> {
@@ -38,23 +40,8 @@ public class MainActivity extends AppCompatActivity /* implements FetchDataCallb
             startActivity(intent);
         });
 
-//        BackendFetcher fetcher = new BackendFetcher();
-//        fetcher.fetchData(this);
+        Intent serviceIntent = new Intent(this, DataFetchService.class);
+        startService(serviceIntent);
+
     }
-//
-//    @Override
-//    public void onSuccess(List<Image> imageList) {
-//        // Handle successful data retrieval
-//        List<Image> listuta = imageList;
-//        Image img = listuta.get(1);
-//        System.out.println("Okkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-//        System.out.println(img.toString());
-//        // Use the fetched data as needed
-//    }
-//
-//    @Override
-//    public void onFailure(String errorMessage) {
-//        // Handle failure
-//        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-//    }
 }

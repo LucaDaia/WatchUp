@@ -32,12 +32,8 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
         if(intent.hasExtra("name")) {
             this.name = intent.getStringExtra("name");
         }
-        System.out.println("LLLLLLLLLLLLLLLLLLaaaaaaa");
-        System.out.println(name);
 
         List<Image> imageList = intent.getParcelableArrayListExtra("imageList");
-        System.out.println("URMEAZAAAA LISTA CU IMAGINI SIUUUUU");
-        System.out.println(imageList);
         List<Image> listForName = Utils.sortImageListOnlyByName(imageList, this.name);
 
         imgView = findViewById(R.id.imageViewDetails);
@@ -65,7 +61,7 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
             System.out.println(p.getName());
             if(p.getName().equals(this.name)) {
                 System.out.println(Utils.removeImagesPath(p.getImgData()));
-                personChoosed.setName(p.getName());
+//                personChoosed.setName(p.getName());
                 personChoosed.setDetails(p.getDetails());
                 personChoosed.setImgData(p.getImgData());
             }

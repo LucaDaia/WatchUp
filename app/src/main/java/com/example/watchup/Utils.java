@@ -1,8 +1,16 @@
 package com.example.watchup;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.text.BoringLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +28,7 @@ import java.util.Locale;
 
 public class Utils {
 //    public static String BaseUrl = "http://10.0.2.2:8081/api/";
-      public static String BaseUrl = "https://71d6-188-25-244-211.ngrok-free.app/api/";
+      public static String BaseUrl = "https://5dc4-188-25-244-211.ngrok-free.app/api/";
 
     public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
        String url = "";
@@ -101,6 +109,14 @@ public class Utils {
 
         Utils.sortObjectsByDate(temp);
         return temp;
+    }
+
+    public static void checkNotifPermission(Activity activity, Context context) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if(ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[] {Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
     }
 }
 

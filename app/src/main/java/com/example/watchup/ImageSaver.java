@@ -30,7 +30,6 @@ public class ImageSaver {
         Drawable drawable = imageView.getDrawable();
         Bitmap bitmap = drawableToBitmap(drawable);
 
-        // Save the bitmap to the gallery
         String savedImageURL = MediaStore.Images.Media.insertImage(
                 context.getContentResolver(),
                 bitmap,
