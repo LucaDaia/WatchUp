@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.ktx.Firebase;
@@ -32,6 +33,8 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
     //-----
     FirebaseAuth auth;
     FirebaseUser user;
+    //----
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,33 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
             startActivity(intent);
             finish();
         }
+
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationViewLA);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_home);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if(item.getItemId() == R.id.bottom_home) {
+                return true;
+            }
+            else if(item.getItemId() == R.id.bottom_settings) {
+                //start settings activity
+                return true;
+            }
+            else if(item.getItemId() == R.id.bottom_graph) {
+                //start graphActivity
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                return true;
+            }
+            else if(item.getItemId() == R.id.bottom_logout) {
+                FirebaseAuth.getInstance().signOut();
+                Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(newIntent);
+                return true;
+            }
+            return false;
+
+        });
 
 //        BackendFetcher fetcher = new BackendFetcher();
 //        fetcher.fetchData(this);

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
     private TextView textViewName;
     private TextView textViewDetails;
     private String name;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
         recyclerViewDetails.setLayoutManager(layoutManager);
         adapter = new ImageAdapter(this, listForName);
         recyclerViewDetails.setAdapter(adapter);
+
     }
 
     @Override

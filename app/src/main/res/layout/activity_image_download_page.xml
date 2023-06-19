@@ -11,30 +11,26 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="30dp"></ImageView>
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/butonDownload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewForActivity"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/imageViewForActivity"
-        android:text="Download this image!"
-        android:layout_marginBottom="20dp"
-        >
-
-    </Button>
+        android:layout_marginTop="16dp"
+        android:text="Download this image!" />
 
     <Button
         android:id="@+id/butonShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/butonDownload"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/butonDownload"
-        android:text="Share this image!">
-
-    </Button>
+        android:layout_marginTop="16dp"
+        android:text="Share this image!" />
 
 
 </RelativeLayout>

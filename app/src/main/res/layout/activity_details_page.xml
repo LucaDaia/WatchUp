@@ -12,9 +12,6 @@
         android:layout_centerHorizontal="true"
         android:text="WatchUp"
         android:textSize="20sp">
-
-
-
     </TextView>
 
     <ImageView
@@ -24,8 +21,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp">
-
-
     </ImageView>
 
     <TextView
@@ -36,7 +31,8 @@
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewDetails"
-        android:paddingBottom="5dp"></TextView>
+        android:paddingBottom="5dp">
+    </TextView>
 
     <TextView
         android:id="@+id/textViewDetails"
@@ -46,12 +42,15 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:paddingBottom="20dp"
-        android:layout_below="@+id/textViewName"></TextView>
-    
+        android:layout_below="@+id/textViewName">
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textViewDetails"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_below="@+id/textViewDetails">
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 </RelativeLayout>
