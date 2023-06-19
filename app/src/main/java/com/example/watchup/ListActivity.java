@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.ktx.Firebase;
+
 import java.io.Serializable;
 import java.sql.Array;
 import java.util.ArrayList;
@@ -25,11 +29,23 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
     private Runnable fetchRunnable;
     private List<Person> personList = new ArrayList<>();
     private List<Image> imageListForSending = new ArrayList<>();
+    //-----
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        auth  = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if(user == null) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
 //        BackendFetcher fetcher = new BackendFetcher();
 //        fetcher.fetchData(this);
