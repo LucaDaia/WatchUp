@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "203229823991",
+    "project_id": "watchup-4a1bb",
+    "storage_bucket": "watchup-4a1bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203229823991:android:d41b9c2e2c88b2b9e8e4f2",
+        "android_client_info": {
+          "package_name": "com.example.watchup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203229823991-336quutb0ea1gj1p8stu9l02n50f45et.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdNoqWej1KWbZ_1eLzNA_q3Z7NXw6TjSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203229823991-336quutb0ea1gj1p8stu9l02n50f45et.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterPage"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingEnd="15dp">
+
+    <!--<Button-->
+    <!--    android:id="@+id/butonGetStarted"-->
+    <!--    android:layout_width="250dp"-->
+    <!--    android:layout_height="50dp"-->
+    <!--    android:layout_centerHorizontal="true"-->
+    <!--    android:text="Get Started">-->
+    <!--</Button>-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/butonTestList"-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_below="@+id/butonGetStarted"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_marginTop="131dp"-->
+    <!--        android:layout_marginEnd="66dp"-->
+    <!--        android:text="Test List Activity">-->
+
+    <!--    </Button>-->
+
+    <TextView
+        android:text="@string/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:textSize="30dp">
+
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailInputR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/EmailHint" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordInputR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PasswordHint" />
+
+    <ProgressBar
+        android:id="@+id/progressBarR"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"/>
+
+</LinearLayout>
