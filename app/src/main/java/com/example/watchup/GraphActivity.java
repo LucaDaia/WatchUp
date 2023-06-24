@@ -2,40 +2,48 @@ package com.example.watchup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GraphActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    List<Image> imageList = new ArrayList<>();
+
+    BarChart barChart;
+    PieChart pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-//        bottomNavigationView = findViewById(R.i);
-//        bottomNavigationView.setSelectedItemId(R.id.bottom_home);
-//
-//        bottomNavigationView.setOnItemSelectedListener(item -> {
-//            if(item.getItemId() == R.id.bottom_home) {
-//                return true;
-//            }
-//            else if(item.getItemId() == R.id.bottom_settings) {
-//                //start settings activity
-//                return true;
-//            }
-//            else if(item.getItemId() == R.id.bottom_graph) {
-//                //start graphActivity
-//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//                return true;
-//            }
-//            else if(item.getItemId() == R.id.bottom_logout) {
-//                return true;
-//            }
-//            return false;
-//
-//        });
+        imageList = getIntent().getParcelableArrayListExtra("imageList");
+        System.out.println(imageList);
+
+        barChart = findViewById(R.id.barChart);
+        pieChart = findViewById(R.id.pieChart);
+
+
+        GraphUtils graphUtils = new GraphUtils(imageList,getApplicationContext());
+        List<PersonForGraph> listOfPersons = graphUtils.getListOfPersons();
+
+        graphUtils.configureBarChart(barChart, listOfPersons);
+        graphUtils.configurePieChart(pieChart, listOfPersons);
     }
 }

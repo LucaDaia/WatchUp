@@ -140,10 +140,8 @@ public class DataFetchService extends Service implements FetchDataCallback {
             Notification newNotification = createNotification(latestImage);
 //            NotificationManager manager = getSystemService(NotificationManager.class);
             notificationManager.notify(NOTIFICATION_ID, newNotification);
-            System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
         } else {
             currentImageList = imageList;
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
         counterOfRefreshes++;
     }

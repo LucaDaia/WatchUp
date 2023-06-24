@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity /* implements FetchDataCallb
                                 Toast.makeText(getApplicationContext(), "Authentication succeded.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                 finish();
                             } else {
                                 // If sign in fails, display a message to the user.

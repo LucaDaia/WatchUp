@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,6 +65,9 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
             }
             else if(item.getItemId() == R.id.bottom_graph) {
                 //start graphActivity
+                Intent i = new Intent(getApplicationContext(), GraphActivity.class);
+                i.putParcelableArrayListExtra("imageList", (ArrayList<? extends Parcelable>) this.imageListForSending);
+                startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             }
@@ -71,6 +75,7 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
                 FirebaseAuth.getInstance().signOut();
                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(newIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 return true;
             }
             return false;
