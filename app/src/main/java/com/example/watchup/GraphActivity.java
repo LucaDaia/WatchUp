@@ -75,7 +75,7 @@ public class GraphActivity extends AppCompatActivity implements OnChartValueSele
         String s = "Name: " + this.listOfPersons.get(xValue.intValue()).getName();
         nameTV.setText(s);
         TextView visitsTV = dialogView.findViewById(R.id.textViewVisitsBarChartDetails);
-        visitsTV.setText(yValue.toString());
+        visitsTV.setText("Number of visits: " + yValue.intValue());
         Person p = Utils.findPerson(this.personListFetcher, this.listOfPersons.get(xValue.intValue()).getName());
         System.out.println(p);
         imgView = dialogView.findViewById(R.id.imageViewBarChartDetails);

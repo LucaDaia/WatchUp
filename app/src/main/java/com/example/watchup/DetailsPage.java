@@ -87,5 +87,6 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
         intent.putExtra("data", data);
         intent.putExtra("name", name);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

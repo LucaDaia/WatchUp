@@ -152,6 +152,7 @@ public class ListActivity extends AppCompatActivity implements FetchDataCallback
         intent.putExtra("name", name);
         intent.putExtra("imageList", (Serializable) this.imageListForSending);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 //    @Override
