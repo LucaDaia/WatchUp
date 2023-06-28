@@ -10,32 +10,15 @@
     android:gravity="center"
     android:paddingEnd="15dp">
 
-    <!--<Button-->
-    <!--    android:id="@+id/butonGetStarted"-->
-    <!--    android:layout_width="250dp"-->
-    <!--    android:layout_height="50dp"-->
-    <!--    android:layout_centerHorizontal="true"-->
-    <!--    android:text="Get Started">-->
-    <!--</Button>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/butonTestList"-->
-    <!--        android:layout_width="250dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_below="@+id/butonGetStarted"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_marginTop="131dp"-->
-    <!--        android:layout_marginEnd="66dp"-->
-    <!--        android:text="Test List Activity">-->
-
-    <!--    </Button>-->
 
     <TextView
         android:text="@string/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:textSize="30dp">
+        android:textSize="50dp"
+        android:fontFamily="@font/fira_code_bold"
+        android:textColor="@color/white">
 
     </TextView>
 
@@ -49,7 +32,8 @@
         android:id="@+id/emailInputR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/EmailHint" />
+        android:hint="@string/EmailHint"
+        android:fontFamily="@font/fira_code_regular"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +46,8 @@
         android:id="@+id/passwordInputR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/PasswordHint" />
+        android:hint="@string/PasswordHint"
+        android:fontFamily="@font/fira_code_regular"/>
 
     <ProgressBar
         android:id="@+id/progressBarR"
@@ -74,6 +59,9 @@
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register"/>
+        android:text="@string/register"
+        android:fontFamily="@font/fira_code_regular"
+        android:textColor="@color/white"
+        android:background="@color/orange"/>
 
 </LinearLayout>

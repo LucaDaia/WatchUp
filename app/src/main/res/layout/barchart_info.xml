@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bottom_background">
+
+    <ImageView
+        android:id="@+id/imageViewBarChartDetails"
+        android:layout_width="172dp"
+        android:layout_height="179dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="112dp" />
+
+    <TextView
+        android:id="@+id/textViewNameBarChartDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewBarChartDetails"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:fontFamily="@font/fira_code_regular">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewVisitsBarChartDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewNameBarChartDetails"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:fontFamily="@font/fira_code_regular">
+
+    </TextView>
+
+</RelativeLayout>

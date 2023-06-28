@@ -28,7 +28,7 @@ import java.util.Locale;
 
 public class Utils {
     public static String BaseUrl = "http://10.0.2.2:8081/api/";
-//      public static String BaseUrl = "https://6f94-86-127-154-58.ngrok-free.app/api/";
+//      public static String BaseUrl = "https://847d-86-127-154-58.ngrok-free.app/api/";
 
     public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
        String url = "";
@@ -42,6 +42,10 @@ public class Utils {
                    .load(url)
                    .into(imageView);
 
+    }
+
+    public static void insertUnknown(ImageView imageView) {
+        imageView.setImageResource(R.drawable.question_mark);
     }
 
 
@@ -117,6 +121,15 @@ public class Utils {
                 ActivityCompat.requestPermissions(activity, new String[] {Manifest.permission.POST_NOTIFICATIONS}, 101);
             }
         }
+    }
+
+    public static Person findPerson(List<Person> listPersonFetcher, String name) {
+        for(Person p: listPersonFetcher) {
+            if(p.getName().equals(name)) {
+                return p;
+            }
+        }
+          return new Person();
     }
 }
 
