@@ -60,20 +60,26 @@ public class DetailsPage extends AppCompatActivity implements FetchPersonDataCal
     public void onPersonSuccess(List<Person> personList) {
         System.out.println(personList);
         Person personChoosed = new Person();
-        personChoosed.setName(this.name);
+//        personChoosed.setName(this.name);
         for(Person p : personList) {
             System.out.println(p.getName());
             if(p.getName().equals(this.name)) {
                 System.out.println(Utils.removeImagesPath(p.getImgData()));
 //                personChoosed.setName(p.getName());
+                personChoosed.setName(p.getName());
                 personChoosed.setDetails(p.getDetails());
                 personChoosed.setImgData(p.getImgData());
             }
         }
 
-        Utils.insertImageByName(Utils.removePersonImagesPath(personChoosed.getImgData()), imgView, false);
+        if(personChoosed.getName().equals(this.name)) {
+            Utils.insertImageByName(Utils.removePersonImagesPath(personChoosed.getImgData()), imgView, false);
+        }
+        else {
+            Utils.insertUnknown(imgView);
+        }
         this.textViewDetails.setText(personChoosed.getDetails());
-        this.textViewName.setText(personChoosed.getName());
+        this.textViewName.setText(this.name);
     }
 
     @Override

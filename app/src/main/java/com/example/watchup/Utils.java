@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class Utils {
-    public static String BaseUrl = "http://10.0.2.2:8081/api/";
-//      public static String BaseUrl = "https://847d-86-127-154-58.ngrok-free.app/api/";
+//    public static String BaseUrl = "http://10.0.2.2:8081/api/";
+      public static String BaseUrl = "https://2f14-109-166-136-198.ngrok-free.app/api/";
 
     public static void insertImageByName(String name, ImageView imageView, Boolean typeOfImage) {
        String url = "";

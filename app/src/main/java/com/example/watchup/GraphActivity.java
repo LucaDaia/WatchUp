@@ -3,12 +3,14 @@ package com.example.watchup;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -18,6 +20,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -37,6 +40,9 @@ public class GraphActivity extends AppCompatActivity implements OnChartValueSele
 
     BarChart barChart;
     PieChart pieChart;
+    BarChart barChartHours;
+    TextView textViewNumber;
+    TextView textViewVisitor;
 
     ImageView imgView;
 
@@ -50,6 +56,7 @@ public class GraphActivity extends AppCompatActivity implements OnChartValueSele
 
         barChart = findViewById(R.id.barChart);
         pieChart = findViewById(R.id.pieChart);
+        barChartHours = findViewById(R.id.barChartHours);
 
         barChart.setOnChartValueSelectedListener(this);
 
@@ -58,7 +65,63 @@ public class GraphActivity extends AppCompatActivity implements OnChartValueSele
 
         graphUtils.configureBarChart(barChart, this.listOfPersons);
         graphUtils.configurePieChart(pieChart, this.listOfPersons);
+        graphUtils.configureBarChartHours(barChartHours);
+
+        textViewNumber = findViewById(R.id.totalNumberOfVisitsTV);
+        textViewVisitor = findViewById(R.id.mostActivePersonTV);
+
+        String usefulString = "Total number of visits: " + graphUtils.totalNumberOfVisits(this.listOfPersons);
+        textViewNumber.setText(usefulString);
+        String stringForText = "Most active person: " + graphUtils.getMostActiveVisitor(this.listOfPersons).getName() +
+                " Number of visits: " + graphUtils.getMostActiveVisitor(this.listOfPersons).getNumberOfVisits();
+        textViewVisitor.setText(stringForText);
+
+        System.out.println("LISTAAAA OREEE HAUUU");
+        System.out.println(graphUtils.getHourlyVisits());
+
+        OnChartValueSelectedListener onChartValueSelectedListener = new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                PieEntry pieEntry = (PieEntry) e;
+                String label = pieEntry.getLabel();
+                Float value = pieEntry.getValue();
+
+                LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+                View dialogView = inflater.inflate(R.layout.barchart_info, null);
+
+                TextView nameTV = dialogView.findViewById(R.id.textViewNameBarChartDetails);
+                String s = "Name: " + label;
+                nameTV.setText(s);
+                TextView visitsTV = dialogView.findViewById(R.id.textViewVisitsBarChartDetails);
+                visitsTV.setText("Number of visits: " + value.intValue());
+                Person p = Utils.findPerson(GraphActivity.this.personListFetcher, label);
+                System.out.println(p);
+                imgView = dialogView.findViewById(R.id.imageViewBarChartDetails);
+                if (p.getName().equals("Unknown")) {
+                    Utils.insertUnknown(imgView);
+                } else {
+                    Utils.insertImageByName(Utils.removePersonImagesPath(p.getImgData()), imgView, false);
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(GraphActivity.this);
+                builder.setView(dialogView);
+
+                // Show the dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        };
+
+        pieChart.setOnChartValueSelectedListener(onChartValueSelectedListener);
+
     }
+
+
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
